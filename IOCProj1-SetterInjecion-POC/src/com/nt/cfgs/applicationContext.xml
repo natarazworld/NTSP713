@@ -11,7 +11,6 @@
         <bean id="wmg"  class="com.nt.beans.WishMessageGenerator">
              <property name="date"  ref="dt"/>
         </bean>
-        
-        
+     
         
  </beans>       

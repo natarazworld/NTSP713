@@ -9,18 +9,25 @@ public class WishMessageGenerator {
 	static {
 		System.out.println("WishMessageGenerator.static block");
 	}
-	
-	public WishMessageGenerator() {
-		System.out.println("WishMessageGenerator:: 0-param constructor");
-	}
 
-	public void setDate(Date date) {
-		System.out.println("WishMessageGenerator:: setDate(-)");
+	public WishMessageGenerator(Date date) {
+		System.out.println("WishMessageGenerator:: 1 -param constructor");
 		this.date = date;
 	}
-   
+
+	
+	public void setDate(Date date) {
+		System.out.println("WishMessageGenerator.setDate(-)");
+		this.date = date;
+	}
+
+
+
+
+
+
 	public  String  generateWishMessage(String user) {
-		System.out.println("WishMessageGenerator.generateWishMessage()");
+		System.out.println("WishMessageGenerator.generateWishMessage() date=="+date);
 		 int hour=0;
 		//get current hour of the day
 		 hour=date.getHours();

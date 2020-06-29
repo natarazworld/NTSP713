@@ -14,7 +14,7 @@ public class SetterInjectionTest {
 		 Resource res=null;
 		 BeanFactory factory=null;
 		 WishMessageGenerator generator=null;
-		 Object obj=null;
+		 Object obj=null,obj1=null,obj2=null;
 		 String result=null; 
 		//hold name and location of spring bean cfg file
 		 res=new FileSystemResource("src/com/nt/cfgs/applicationContext.xml");
@@ -25,8 +25,8 @@ public class SetterInjectionTest {
 		 //typecasting
 		 generator=(WishMessageGenerator)obj;
 		 //invoke the  method
-		 result=generator.generateWishMessage("raja");
-		 System.out.println("Message::"+result);
+	 result=generator.generateWishMessage("raja");
+		 System.out.println("Message::"+result); 
 		
 	}//main
 }//class
