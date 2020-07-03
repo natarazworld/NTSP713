@@ -9,14 +9,18 @@ public class WishMessageGenerator {
 	static {
 		System.out.println("WishMessageGenerator.static block");
 	}
+	
+	public WishMessageGenerator() {
+		System.out.println("WishMessageGenerator:: 0-param constructor");
+	}
 
-	public WishMessageGenerator(Date date) {
+	public WishMessageGenerator(Date dat) {
 		System.out.println("WishMessageGenerator:: 1 -param constructor");
-		this.date = date;
+		this.date = dat;
 	}
 
 	
-	public void setDate(Date date) {
+	public void setDate1(Date date) {
 		System.out.println("WishMessageGenerator.setDate(-)");
 		this.date = date;
 	}
