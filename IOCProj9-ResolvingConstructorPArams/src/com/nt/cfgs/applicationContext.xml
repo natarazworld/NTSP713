@@ -10,5 +10,18 @@
        <constructor-arg index="1"  value="80"/>
           <constructor-arg  index="0"  value="90"/>
     </bean>
+    
+    <bean id="emp"  class="com.nt.beans.Employee">
+        <constructor-arg value="raja"  type="java.lang.String"/>
+        <constructor-arg  value="1001" type="int"/>
+        <constructor-arg value="60000.55f"  type="float"  index="0" name="salary"/>
+    </bean>
+    
+    <bean id="st"  class="com.nt.beans.Student">
+        <constructor-arg name="total"  value="270"/>
+        <constructor-arg name="sno"  value="342"/>
+        <constructor-arg name="sname" value="karan"/>
+        <constructor-arg name="sadd"  value="hyd"/>
+    </bean>
 
 </beans>
