@@ -7,12 +7,12 @@ import javax.sql.DataSource;
 
 import com.nt.bo.CustomerBO;
 
-public final class CustomerDAOImpl implements CustomerDAO {
+public final class OracleCustomerDAOImpl implements CustomerDAO {
 	private  static final  String   CUSTOMER_INSERT_QUERY="INSERT INTO SPRING_CUSTOMER VALUES(CNO_SEQ1.NEXTVAL,?,?,?,?)";
 	private  DataSource ds;
 
 	 //for constructor injection  (alt+shift+s,o)
-		public CustomerDAOImpl(DataSource ds) {
+		public OracleCustomerDAOImpl(DataSource ds) {
 		this.ds = ds;
 	}
 

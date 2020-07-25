@@ -21,5 +21,9 @@ implementation group: 'org.springframework', name: 'spring-context-support', ver
 implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.2.8.RELEASE'
 // https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6
 implementation group: 'com.oracle.database.jdbc', name: 'ojdbc6', version: '11.2.0.4'
+
+// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.21'
+
     
 }
