@@ -4,18 +4,22 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Configiure DataSource -->
-	<bean id="oraDrds"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName"
-			value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url"
-			value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="system" />
-		<property name="password" value="manager" />
+	<bean id="oraDrds"	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"		value="oracle.jdbc.driver.OracleDriver" />
+		<!-- <property name="url"			value="jdbc:oracle:thin:@localhost:1521:xe"  /> -->
+		 <property name="username" value="system" />
+		<property name="password" value="manager" /> 
 	</bean>
 	
+	<bean id="oraScds"  class="org.springframework.jdbc.datasource.SingleConnectionDataSource"   parent="oraDrds"/>
 	
-
+	<bean id="oraHkDs"  class="com.zaxxer.hikari.HikariDataSource" parent="oraDrds">
+	     <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+	     <property name="minimumIdle" value="10"/>   <!-- min pool size -->
+	     <property name="maximumPoolSize" value="20"/>
+	     <property name="connectionTimeout"  value="2000"/>
+	</bean>
+	
 	<bean id="mysqlDrds"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
@@ -24,10 +28,14 @@
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 	</bean>
+	
+	
 
 	<!-- cfg DAO class -->
 	<bean id="oraCustDAO" class="com.nt.dao.OracleCustomerDAOImpl">
-		<constructor-arg ref="oraDrds" />
+		<!-- <constructor-arg ref="oraDrds" /> -->
+		<!-- <constructor-arg ref="oraScds"/> -->
+		 <constructor-arg  ref="oraHkDs"/>
 	</bean>
 
 	<bean id="mysqlCustDAO" class="com.nt.dao.MysqlCustomerDAOImpl">

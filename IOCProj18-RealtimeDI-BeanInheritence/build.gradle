@@ -1,0 +1,32 @@
+
+
+plugins {
+    // Apply the java-library plugin to add support for Java Library
+    id 'application'
+}
+
+mainClassName="com.nt.test.RealtimeDITest"
+run{
+   standardInput=System.in
+}
+
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+     // https://mvnrepository.com/artifact/org.springframework/spring-context-support
+implementation group: 'org.springframework', name: 'spring-context-support', version: '5.2.8.RELEASE'
+// https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.2.8.RELEASE'
+// https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6
+implementation group: 'com.oracle.database.jdbc', name: 'ojdbc6', version: '11.2.0.4'
+
+// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.21'
+
+// https://mvnrepository.com/artifact/com.zaxxer/HikariCP
+implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.5'
+
+    
+}

@@ -6,15 +6,17 @@
 	<!-- Configiure DataSource -->
 	<bean id="oraDrds"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName"
-			value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url"
-			value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="system" />
-		<property name="password" value="manager" />
+		<property name="driverClassName"		value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url"			value="jdbc:oracle:thin:@localhost:1521:xe" />
+	<!-- 	 <property name="username" value="system" />
+		<property name="password" value="manager" />  -->
+		<property name="connectionProperties">  <!-- java.util.Properties type -->
+		      <props>
+		         <prop key="user">system</prop>
+		         <prop key="password">manager1</prop>
+		      </props>
+		</property>
 	</bean>
-	
-	
 
 	<bean id="mysqlDrds"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
