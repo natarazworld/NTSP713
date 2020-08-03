@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Configiure DataSource -->
+	<bean id="oraDrds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"		value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url"			value="jdbc:oracle:thin:@localhost:1521:xe" />
+	<!-- 	 <property name="username" value="system" />
+		<property name="password" value="manager" />  -->
+		<property name="connectionProperties">  <!-- java.util.Properties type -->
+		      <props>
+		         <prop key="user">system</prop>
+		         <prop key="password">manager</prop>
+		      </props>
+		</property>
+	</bean>
+
+	<bean id="mysqlDrds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql:///ntsp713db" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+
+	<!-- cfg DAO class -->
+	<bean id="oraCustDAO" class="com.nt.dao.OracleCustomerDAOImpl">
+		<constructor-arg ref="oraDrds" />
+	</bean>
+
+	<bean id="mysqlCustDAO" class="com.nt.dao.MysqlCustomerDAOImpl">
+		<constructor-arg ref="mysqlDrds" />
+	</bean>
+
+
+
+	
+
+	<!-- cfg Controller class -->
+	<bean id="controller" class="com.nt.controller.MainController">
+		<constructor-arg >
+		   <!-- cfg service class as inner bean-->
+	        <bean 		class="com.nt.service.CustomerMgmtServiceImpl">
+		            <!-- <constructor-arg ref="mysqlCustDAO" /> -->
+		          <constructor-arg ref="oraCustDAO"/>
+	      </bean>
+		</constructor-arg>
+	</bean>
+
+</beans>

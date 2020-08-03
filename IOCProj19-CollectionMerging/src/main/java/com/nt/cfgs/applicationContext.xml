@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-merge="true"  xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+   <!--  spring beans cfg -->
+   <bean id="base1stYear"  class="com.nt.beans.EnggCourse"  abstract="true">
+         <property name="subjects">
+              <set>
+                  <value>C</value>
+                  <value>M1</value>
+                  <value>English</value>
+                  <value>Drawing</value>
+              </set>
+         
+         </property>
+   </bean>
+   
+   <bean id="mech1stYear"  class="com.nt.beans.EnggCourse"  parent="base1stYear">
+         <property name="subjects">
+             <set  >
+                <value>FD</value>
+                <value>Mechanics</value>
+                <value>TD</value>
+             </set>
+         
+         </property>
+   
+   </bean>
+
+</beans>
