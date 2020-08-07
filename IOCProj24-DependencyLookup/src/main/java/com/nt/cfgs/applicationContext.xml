@@ -3,9 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
   <!-- Dependent bean class -->
-   <bean id="engg"  class="com.nt.beans.Engine"/>
+   <bean id="engg1"  class="com.nt.beans.Engine"/>
    
    <!-- target bean class -->
-   <bean id="vehicle"   class="com.nt.beans.Vehicle"/>
+   <bean id="vehicle"   class="com.nt.beans.Vehicle">
+       <!--   <constructor-arg value="engg2"/> -->   <!--  Injecting bean id -->
+        <constructor-arg>
+             <idref bean="engg2"/>
+        </constructor-arg> 
+   </bean>
 
 </beans>

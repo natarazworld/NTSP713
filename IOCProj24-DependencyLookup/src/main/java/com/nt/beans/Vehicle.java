@@ -4,10 +4,11 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 public class Vehicle {
+	private String beanId;
 	
-	
-	public Vehicle() {
-		System.out.println("Vehicle:: 0-param constructor");
+	public Vehicle(String beanId) {
+		this.beanId=beanId;
+		System.out.println("Vehicle:: 1-param constructor");
 	}
 	
 	public  void  entertainment() {
@@ -32,8 +33,8 @@ public class Vehicle {
 		reader=new XmlBeanDefinitionReader(factory);
 		reader.loadBeanDefinitions("com/nt/cfgs/applicationContext.xml");
 		System.out.println("Extra container");
-		//get Dependent  Bean class object
-		engg=factory.getBean("engg", Engine.class);
+		//get Dependent  Bean class object  (Dependency lookup)
+		engg=factory.getBean(beanId, Engine.class);
 		engg.start();
 		System.out.println("journey  started  at ::"+sourcePlace);
 		System.out.println("journey is going on.......  from "+sourcePlace+" to "+destPlace);
