@@ -7,6 +7,12 @@ public final class Flipkart {
 	//property
 	private  Courier courier;  //rule1 ,2
 	
+private long regNo;
+	
+	public void setRegNo(long regNo) {
+		this.regNo = regNo;
+	}
+	
 	public Flipkart() {
 		System.out.println("Flipkart:: 0-param constructor");
 	}
@@ -24,7 +30,7 @@ public final class Flipkart {
 	
 	//b.method
 	public  String  shopping(String[] items,float[] prices) {
-		System.out.println("Flipkart.shopping()");
+		System.out.println("Flipkart.shopping()-->regNo::"+regNo);
 		 float billAmt=0.0f;
 		 int oid=0;
 		 String msg=null;

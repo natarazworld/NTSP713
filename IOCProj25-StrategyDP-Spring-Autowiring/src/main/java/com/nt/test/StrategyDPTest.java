@@ -26,7 +26,7 @@ public class StrategyDPTest {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("..................................");
+		/*System.out.println("..................................");
 		fpkt1=factory.getBean("fpkt1",Flipkart.class);
 		try{
 			//invoke the methods
@@ -34,6 +34,6 @@ public class StrategyDPTest {
 			}
 			catch (Exception e) {
 				e.printStackTrace();
-			}
+			}*/
 	}//main
 }//class
