@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <!-- Static factory method bean instanation giving its own class object -->
+    <bean id="c1"  class="java.lang.Class"  factory-method="forName">
+        <constructor-arg value="java.util.Date"/> <!-- forName arg values -->
+    </bean>
+    
+        <!-- Static factory method bean instanation giving related class object -->
+        <bean id="cal1"  class="java.util.Calendar"   factory-method="getInstance"/>
+        
+        <!-- Static factory method bean instanation giving unrelated class object -->
+        <bean id="con"  class="java.sql.DriverManager"  factory-method="getConnection">
+             <constructor-arg value="jdbc:oracle:thin:@localhost:1521:xe"/>
+             <constructor-arg value="system"/>
+             <constructor-arg value="manager"/>  <!--  here <c-a> tags are supplying arg values getConnection(-,-,-) -->
+        </bean>
+        
+        <!-- Static factory method bean instanation giving unrelated class object -->
+        <bean id="sys"  class="java.lang.System"  factory-method="getProperties"/>
+        
+        <!-- Instance factotry method bean instantiation giving same class object -->
+        <bean id="s1"  class="java.lang.String" >
+            <constructor-arg value="hello"/>  <!-- for construcotr injection -->
+        </bean>
+        <bean id="s2"  factory-bean="s1"  factory-method="concat">
+             <constructor-arg value="123"/>  <!-- for concat(-) method arg values -->
+        </bean>
+        
+        <!-- Instance factotry method bean instantiation giving unrelated class object -->
+        <bean id="sb"  class="java.lang.StringBuffer" >
+            <constructor-arg value="hello how are u?"/>  <!-- for construcotr injection -->
+        </bean>
+        <bean id="s3"  factory-bean="sb"  factory-method="substring">
+             <constructor-arg value="0"/> 
+             <constructor-arg value="5"/>
+        </bean>
+        
+
+</beans>
