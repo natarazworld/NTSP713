@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.env.Environment;
 
 import com.nt.controller.MainController;
 import com.nt.vo.CustomerVO;
@@ -17,6 +18,7 @@ public class RealtimeDITest1 {
 		ApplicationContext ctx=null;
 		MainController controller = null;
 		String result = null;
+		 Environment  env=null;
 		// read inputs
 		sc = new Scanner(System.in);
 		System.out.println("enter Customername :: ");
@@ -38,6 +40,7 @@ public class RealtimeDITest1 {
 		vo.setTime(time);
 		// create ApplicationContext IOC container
 		ctx=new ClassPathXmlApplicationContext("com/nt/cfgs/applicationContext.xml");
+		
 		// get Controller Bean class object..
 		controller = ctx.getBean("controller", MainController.class);
 		// invoke the method
@@ -49,6 +52,10 @@ public class RealtimeDITest1 {
 			e.printStackTrace();
 		}
 		
+		//get Env.. object
+		env=ctx.getEnvironment();
+		System.out.println(env.toString());
+		System.out.println(env.getProperty("jdbc.user")+"  "+env.getProperty("os.name")+"  "+env.getProperty("path"));
 		
 		
 	}// main

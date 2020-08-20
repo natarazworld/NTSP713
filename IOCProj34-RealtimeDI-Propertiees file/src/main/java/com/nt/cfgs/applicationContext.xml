@@ -30,7 +30,7 @@
 		<constructor-arg ref="mysqlCustDAO" /> 
 	<!-- 	<constructor-arg ref="oraCustDAO"/> -->
 	    <property name="osName"  value="${os.name}"/>
-	   <!--  <property name="path"  value="${path}"/> -->
+	 <!--     <property name="path"  value="${path}"/>  -->
 	</bean>
 
 	<!-- cfg Controller class -->
@@ -38,11 +38,18 @@
 		<constructor-arg ref="custService" />
 	</bean>
 	
-	<context:property-placeholder  location="com/nt/commons/jdbc.properties" />
+	 <context:property-placeholder  location="classpath:com/nt/commons/jdbc1.properties,classpath:com/nt/commons/jdbc2.properties" />
 
-	<!-- <bean id="pphc"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<!--   <bean id="pphc"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	   
 	     <property name="location"  value="com/nt/commons/jdbc.properties"/>
-	</bean> -->
-
+	     <property name="locations">
+	         <array>
+	            <value>com/nt/commons/jdbc1.properties</value>
+	            <value>com/nt/commons/jdbc2.properties</value>
+	         </array>
+	     </property>
+	</bean>  -->
+ 
 
 </beans>
