@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+   <!-- cfg Properties file -->
+   <context:property-placeholder location="com/nt/commons/jdbc.properties"/>
+<!-- DataSource cfg -->
+   <bean id="hkDs"  class="com.zaxxer.hikari.HikariDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.pwd}"/>
+        <property name="minimumIdle" value="${pool.minsize}"/>
+        <property name="maximumPoolSize" value="${pool.maxsize}"/>
+   </bean>
+   
+   <!-- cfg DAO -->
+   <bean id="empDAO"  class="com.nt.dao.EmployeeDAOImpl">
+      <constructor-arg ref="hkDs"/>
+   </bean>
+   
+   <!-- cfg Service class -->
+   <bean id="empService"  class="com.nt.service.EmployeeMgmtServiceImpl">
+        <constructor-arg  ref="empDAO"/>
+   </bean>
+
+</beans>
