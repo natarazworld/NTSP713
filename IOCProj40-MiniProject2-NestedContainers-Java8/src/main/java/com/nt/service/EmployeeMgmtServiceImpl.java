@@ -11,9 +11,17 @@ import com.nt.dto.EmployeeDTO;
 
 public class EmployeeMgmtServiceImpl implements EmployeeMgmtService {
      private  EmployeeDAO  dao;
+     private String type;
      
-	public EmployeeMgmtServiceImpl(EmployeeDAO dao) {
+	public EmployeeMgmtServiceImpl(EmployeeDAO dao,String type) {
+		System.out.println("container type::"+type);
 		this.dao = dao;
+		this.type=type;
+	}
+
+	@Override
+	public String toString() {
+		return "EmployeeMgmtServiceImpl [type=" + type + "]";
 	}
 
 	@Override
@@ -39,4 +47,7 @@ public class EmployeeMgmtServiceImpl implements EmployeeMgmtService {
 		  
 		return listDTO;
 	}//method
+	
+	
+	
 }//class

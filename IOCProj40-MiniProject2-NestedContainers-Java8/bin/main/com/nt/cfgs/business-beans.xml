@@ -25,6 +25,7 @@
    <!-- cfg Service class -->
    <bean id="empService"  class="com.nt.service.EmployeeMgmtServiceImpl">
         <constructor-arg  ref="empDAO"/>
+         <constructor-arg value="parent"/>
    </bean>
 
 </beans>

@@ -13,6 +13,7 @@ public class MainController {
 	private  EmployeeMgmtService service;
 
 	public MainController(EmployeeMgmtService service) {
+		   System.out.println(service);
 			this.service = service;
 	}
 	
