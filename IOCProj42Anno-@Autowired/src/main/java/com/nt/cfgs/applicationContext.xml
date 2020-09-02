@@ -5,12 +5,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
   <!-- cfg all dependent classes as spring beans -->
-       <bean id="dtdc"  class="com.nt.beans.DTDC"  autowire-candidate="false">
+       <bean id="dtdc"  class="com.nt.beans.DTDC">
          <!--   <qualifier value="d1"/> -->
        </bean>  
        <bean id="bDart"  class="com.nt.beans.BlueDart" >
           <!-- <qualifier value="b1"/> -->
        </bean>
+       
+       <bean id="fFlight"  class="com.nt.beans.FirstFlight" />
+       
+         <bean id="dhl"  class="com.nt.beans.DHL" />
+       
+       <bean id="dt"  class="java.util.Date"/>
   
   <!-- Cft Target class  as spring bean -->
   <bean id="fpkt"  class="com.nt.beans.Flipkart"/>
