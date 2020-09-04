@@ -1,12 +1,13 @@
 package com.nt.beans;
 
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 //final -rule3
 //Interface impl - rule2
 @Component("dtdc")
 //@Primary
+@Lazy(true)
 public final class DTDC implements Courier {
 	
 	public DTDC() {

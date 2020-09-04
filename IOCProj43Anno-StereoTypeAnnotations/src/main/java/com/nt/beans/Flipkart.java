@@ -6,17 +6,19 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
  //final --rule3
 //@Component("fpkt")
 @Component
+//@Scope("prototype")
 public final class Flipkart {
 	//property
 	@Autowired
 	@Qualifier("dhl")
 	private  Courier courier;  //rule1 ,2
 	@Autowired
-	private  static Date date;
+	private   Date date;
 	
 	public Flipkart() {
 		System.out.println("Flipkart:: 0-param constructor");

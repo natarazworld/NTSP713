@@ -10,15 +10,17 @@ public class StrategyDPTest {
 
 	public static void main(String[] args) {
 		 ApplicationContext ctx=null;
-		 Flipkart fpkt=null;
+		 Flipkart fpkt=null,fpkt1=null;
 		//create IOC container
 		 ctx=new ClassPathXmlApplicationContext("com/nt/cfgs/applicationContext.xml");
 		 //get Bean
 		//fpkt=ctx.getBean("flipkart",Flipkart.class);
 		 fpkt=ctx.getBean(Flipkart.class);
+		 fpkt1=ctx.getBean(Flipkart.class);
+		 System.out.println(fpkt.hashCode()+"   "+fpkt1.hashCode());
 		//invoke the methods
 		System.out.println(fpkt.shopping(new String[] {"PPEKit"," MASK","Sanitizer"},new float[] {2000,500,200}));
 		//close container
-		((AbstractApplicationContext) ctx).close();
+		((AbstractApplicationContext) ctx).close(); 
 	}//main
 }//class

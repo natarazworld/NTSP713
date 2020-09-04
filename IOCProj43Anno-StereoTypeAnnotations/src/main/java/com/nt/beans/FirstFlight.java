@@ -1,8 +1,10 @@
 package com.nt.beans;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component("fFlight")
+@Lazy(true)
 public class FirstFlight implements Courier {
 	
 	public FirstFlight() {

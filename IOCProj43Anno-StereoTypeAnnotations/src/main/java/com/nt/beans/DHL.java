@@ -1,10 +1,12 @@
 package com.nt.beans;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 //final -rule3
 //Interface impl - rule2
 @Component("dhl")
+@Lazy
 public final class DHL implements Courier {
 	
 	public DHL() {
