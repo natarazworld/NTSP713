@@ -4,18 +4,21 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 
-import javax.inject.Inject;
+import javax.annotation.Resource;
 import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Qualifier;
 
 
 @Named("fpkt")
 public final class Flipkart {
 	//property
-	//@Inject
-	@Named("dhl")
+	@Resource
+	@Qualifier("dtdc")
 	private  Courier courier;  //rule1 ,2
-	@Inject
+	@Resource
 	private   Date date;
+	
 	
 	public Flipkart() {
 		System.out.println("Flipkart:: 0-param constructor");
