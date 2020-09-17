@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.nt.beans.WebContainer;
 
-public class LMIProblemTest {
+public class LMISolutionTest {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx=null;
