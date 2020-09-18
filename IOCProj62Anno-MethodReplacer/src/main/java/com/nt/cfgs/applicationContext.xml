@@ -14,8 +14,7 @@
        </replaced-method> 
     </bean>
     
-    <!--  Method Replacer cfg -->
-    <bean id="bankCIAR"  class="com.nt.replacer.BankLoanMgmt_CaculateIntrestAmountReplacer"/>
+   <context:component-scan base-package="com.nt.replacer"/>
      
     
 

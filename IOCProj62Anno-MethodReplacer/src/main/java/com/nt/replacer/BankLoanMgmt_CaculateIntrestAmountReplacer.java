@@ -3,7 +3,9 @@ package com.nt.replacer;
 import java.lang.reflect.Method;
 
 import org.springframework.beans.factory.support.MethodReplacer;
+import org.springframework.stereotype.Component;
 
+@Component("bankCIAR")
 public class BankLoanMgmt_CaculateIntrestAmountReplacer implements MethodReplacer {
 
 	@Override
