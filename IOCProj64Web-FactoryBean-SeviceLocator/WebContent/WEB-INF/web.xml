@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+   <servlet>
+      <servlet-name>main</servlet-name>
+      <servlet-class>com.cb.controller.MainControllerServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+   </servlet>
+    <servlet-mapping>
+       <servlet-name>main</servlet-name>
+       <url-pattern>/controller</url-pattern>
+    </servlet-mapping>
+   
+   <welcome-file-list>
+      <welcome-file>index.html</welcome-file>
+   </welcome-file-list>
+</web-app>

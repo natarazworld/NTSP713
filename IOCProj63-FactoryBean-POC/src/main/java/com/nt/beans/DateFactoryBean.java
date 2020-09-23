@@ -35,6 +35,4 @@ public class DateFactoryBean implements FactoryBean<LocalDate> {
 	   return false;   //decide this  based getObject() method logic...
 	                             //of getObject() method returs single object always then go for true otherwise go for false..
 	}
-	
-
 }
