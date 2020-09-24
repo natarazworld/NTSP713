@@ -1,0 +1,24 @@
+
+plugins {
+    // Apply the java-library plugin to add support for Java Library
+    id 'war'
+}
+
+eclipse {
+        wtp {
+           component {
+                      resource sourcePath: "/WebContent", deployPath: "/"
+                 }
+         }
+  }
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+      // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+   implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+   // https://mvnrepository.com/artifact/org.springframework/spring-context-support
+   implementation group: 'org.springframework', name: 'spring-context-support', version: '5.2.9.RELEASE'
+}
