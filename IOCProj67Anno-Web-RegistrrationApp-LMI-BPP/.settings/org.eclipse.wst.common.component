@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+	<wb-module deploy-name="IOCProj67Anno-Web-RegistrrationApp-LMI-BPP">
+		<property name="context-root" value="IOCProj67Anno-Web-RegistrrationApp-LMI-BPP"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
+		<wb-resource deploy-path="/" source-path="/WebContent"/>
+	</wb-module>
+</project-modules>
