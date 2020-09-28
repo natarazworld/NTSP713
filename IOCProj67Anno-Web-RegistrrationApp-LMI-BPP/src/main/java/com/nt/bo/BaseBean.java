@@ -6,7 +6,7 @@ import java.util.Date;
 public abstract class BaseBean {
 	private int id;
 	private String name;
-	private LocalDateTime doj;
+	private LocalDateTime doj;  //java8 date & time api
 
 	public int getId() {
 		return id;
@@ -28,8 +28,8 @@ public abstract class BaseBean {
 		return doj;
 	}
 
-	public void setDoj(LocalDateTime doj) {
-		this.doj = doj;
+	public void setDoj(LocalDateTime date) {
+		this.doj = date;
 	}
 
 	@Override
