@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+   <bean id="pInfo"  class="com.nt.beans.PersonInfo">
+       <property name="adharNo"  value="45678997666"/>
+       <property name="pname"  value="ramesh"/>
+       <property name="salary"  value="67000.55f"/>
+       <property name="addresses"  value="hyd,vizag"/>
+       <property name="dob"  value="11/23/1990"/>     <!--  MM/dd/yyyy -->
+       <property name="countryCurrency"  value="INR"/>  <!-- Converts currency code into  java.util.Currency object -->
+       <property name="photoPath" value="E://files//photo.jpg"/>  <!-- converts given location into java.io.File class object -->
+        <property name="currentLocale"  value="hi-IN"/>  <!-- converts given string locale to  java.util.Locale object -->
+        <property name="javaClass"  value="java.lang.System"/> <!-- converts given class name to java.lang.Clas object -->
+        <property name="javaClasses" value="java.lang.System,java.lang.String"/>
+         <property name="inputFile"  value="classpath:/photo.jpg"/> <!-- converts given String content url as the file location represented by InputStream obj -->
+        <property name="fbUrl"  value="http://facebook.com/userId=raja"/> <!-- converts given String content to java.util.URL object -->
+        <property name="props"  value="name=raja,age=30,addrs=hyd"/>
+        <property name="timezone" value="Asia/Calcutta"/>  <!-- converts given String to java.util.TimeZone object -->
+   </bean>
+
+</beans>
