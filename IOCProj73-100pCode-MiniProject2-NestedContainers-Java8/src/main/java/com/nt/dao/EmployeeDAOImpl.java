@@ -10,16 +10,24 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Repository;
 
 import com.nt.bo.EmployeeBO;
 
 @Repository("empDAO")
+@PropertySource(value={"com/nt/commons/jdbc.properties","com/nt/commons/jdbc1.properties"})
 public class EmployeeDAOImpl implements EmployeeDAO {
 	private static final String GET_EMPS_BY_DESGS="SELECT EMPNO,ENAME,JOB,SAL,DEPTNO FROM EMP WHERE JOB IN(?,?,?) ORDER BY JOB";
 	@Autowired
 	private  DataSource ds;
 
+	@Value("${jdbc.user}")
+    private String  dbuser;
+	@Value("${os.name}")
+	private String osName;
+    
 
 	@Override
 	public List<EmployeeBO> getAllEmpsByDesgs(String desg1, String desg2, String desg3) throws Exception {
@@ -28,6 +36,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		ResultSet rs=null;
 		List<EmployeeBO> listBO=null;
 		EmployeeBO bo=null;
+		System.out.println(dbuser+"   "+osName);
 		try {
 			//get Pooled jdbc con object
 			con=ds.getConnection();

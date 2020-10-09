@@ -11,12 +11,14 @@ import com.nt.dto.CustomerDTO;
 @Service("custService")
 public class CustomerMgmtServiceImpl implements CustomerMgmtService {
 	@Autowired
-    @Qualifier("oraCustDAO")
+   // @Qualifier("oraCustDAO")
+	@Qualifier("mysqlCustDAO")
 	private  CustomerDAO dao;
 
 
 	@Override
 	public String calculateIntrestAmount(CustomerDTO dto) throws Exception {
+		
 	    float intrAmt=0.0f;
 	    CustomerBO bo=null;
 	    int count=0;

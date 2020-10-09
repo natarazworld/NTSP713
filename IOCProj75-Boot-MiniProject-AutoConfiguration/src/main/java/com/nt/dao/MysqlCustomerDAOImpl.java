@@ -12,14 +12,15 @@ import org.springframework.stereotype.Repository;
 import com.nt.bo.CustomerBO;
 
 @Repository("mysqlCustDAO")
-public  class MysqlCustomerDAOImpl implements CustomerDAO {
+public class MysqlCustomerDAOImpl implements CustomerDAO {
 	private  static final  String   CUSTOMER_INSERT_QUERY="INSERT INTO SPRING_CUSTOMER(CNAME,CADD,PAMT,INTRAMT) VALUES(?,?,?,?)";
+
 	@Autowired
-	@Qualifier("mysqlHKDs")
 	private  DataSource ds;
 
 	@Override
 	public int insert(CustomerBO bo) throws Exception {
+		System.out.println("MysqlCustomerDAOImpl.insert():: "+ds.getClass());
 		Connection con=null;
 		PreparedStatement ps=null;
 		int count=0;
