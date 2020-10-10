@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.nt.bo.CustomerBO;
@@ -14,7 +14,7 @@ import com.nt.bo.CustomerBO;
 @Repository("mysqlCustDAO")
 public class MysqlCustomerDAOImpl implements CustomerDAO {
 	private  static final  String   CUSTOMER_INSERT_QUERY="INSERT INTO SPRING_CUSTOMER(CNAME,CADD,PAMT,INTRAMT) VALUES(?,?,?,?)";
-
+	
 	@Autowired
 	private  DataSource ds;
 

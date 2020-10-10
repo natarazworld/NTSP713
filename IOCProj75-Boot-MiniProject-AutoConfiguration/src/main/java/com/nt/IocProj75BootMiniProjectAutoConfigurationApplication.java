@@ -5,13 +5,19 @@ import java.util.Scanner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import com.nt.controller.MainController;
 import com.nt.vo.CustomerVO;
 
-@SpringBootApplication
+
+
+@SpringBootApplication(exclude = {JdbcTemplateAutoConfiguration.class,DataSourceTransactionManagerAutoConfiguration.class})
 public class IocProj75BootMiniProjectAutoConfigurationApplication {
 
 	public static void main(String[] args) {
@@ -41,7 +47,11 @@ public class IocProj75BootMiniProjectAutoConfigurationApplication {
 		vo.setRate(rate);
 		vo.setTime(time);
 		//get IOC container
-				ctx=SpringApplication.run(IocProj75BootMiniProjectAutoConfigurationApplication.class, args);
+				//ctx=SpringApplication.run(IocProj75BootMiniProjectAutoConfigurationApplication.class, args);
+		     // Bootstrapping Spring boot
+		    SpringApplication app=new SpringApplication();
+		    app.setBannerMode(org.springframework.boot.Banner.Mode.CONSOLE);
+		    ctx=app.run(IocProj75BootMiniProjectAutoConfigurationApplication.class, args);
 				//get Controller class obj
 				controller=ctx.getBean("controller",MainController.class);
 		//invoke b.method
