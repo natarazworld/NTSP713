@@ -1,5 +1,7 @@
 package com.nt.test;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,6 +18,7 @@ public class JdbcTemplateCallbackInterfacesTest {
 		ApplicationContext ctx=null;
 		StudentMgmtService service=null;
 		StudentDTO dto=null;
+		List<StudentDTO> listDTO=null;
 		//create IOC container
 		ctx=new ClassPathXmlApplicationContext("com/nt/cfgs/applicationContext.xml");
 		//get SErvice class object
@@ -33,6 +36,21 @@ public class JdbcTemplateCallbackInterfacesTest {
 			else
 				System.err.println("Other Internal problems");
 			//dae.printStackTrace();
+		}
+		
+		System.out.println("=====================================");
+		try {
+			System.out.println("Students belonging to hyd,delhi,vizag cities");
+			listDTO=service.fetchStudentsByCities("hyd","vizag","delhi");
+			listDTO.forEach(System.out::println);
+		}//try
+		catch(DataAccessException dae) {
+			if(dae instanceof EmptyResultDataAccessException)
+				  System.err.println("Record not found");
+			else if(dae instanceof BadSqlGrammarException)
+				System.err.println("SQLquery is wrong");
+			else
+				System.err.println("Other Internal problems");
 		}
 
 		  //close container
