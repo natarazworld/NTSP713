@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -72,6 +73,30 @@ public class StudentDAOImpl1 implements StudentDAO {
 				                        );
 		return listBO;
 	}//method
+
+	@Override
+	public List<StudentBO> getStudentsByCities1(String city1, String city2, String city3) {
+	    List<StudentBO> listBO=new ArrayList();
+	    jt.query(GET_STUDENTS_BY_CITIES,
+	    		                  new RowCallbackHandler() {
+	    	                                 @Override
+	    	                                public void processRow(ResultSet rs) throws SQLException {
+	    	                                	 System.out.println(
+														"StudentDAOImpl1.getStudentsByCities1(...).new RowCallbackHandler() {...}.processRow()");
+	    	                                	//get each record into StudentBO class object
+	    	                                	 StudentBO bo=new StudentBO();
+	    	                     				bo=new StudentBO();
+	    	                     				bo.setSno(rs.getInt(1));
+	    	                     				bo.setSname(rs.getString(2));
+	    	                     				bo.setSadd(rs.getString(3));
+	    	                     				bo.setAvg(rs.getFloat(4));
+	    	                     				//add each BO class obj to List colleciton
+	    	                     				listBO.add(bo);	                                	
+	    	                                }
+                                    	    },
+	    		                       city1,city2,city3);
+		return listBO;
+	}
 	
 	
 }//outer class

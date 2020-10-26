@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -63,6 +64,7 @@ public class StudentDAOImpl implements StudentDAO {
 
 		@Override
 		public List<StudentBO> extractData(ResultSet rs) throws SQLException, DataAccessException {
+			System.out.println("StudentDAOImpl.StudentExtractor.extractData(-)");
 			List<StudentBO>  listBO=null;
 			StudentBO bo=null;
 			//copy  RS object records to  List of StudentBO collection
@@ -79,6 +81,35 @@ public class StudentDAOImpl implements StudentDAO {
 			}//while
 			return listBO;
 		}//extractData(-)
+		
+	}//inner class
+
+	@Override
+	public List<StudentBO> getStudentsByCities1(String city1, String city2, String city3) {
+		List<StudentBO> listBO=new ArrayList();
+		jt.query(GET_STUDENTS_BY_CITIES,
+				                  new StudentCallbackHandler(listBO), 
+				                  city1,city2,city3);
+		return listBO;
+	}
+	
+	private static class   StudentCallbackHandler   implements RowCallbackHandler{
+            private List<StudentBO> listBO;
+            public StudentCallbackHandler(List<StudentBO> listBO) {
+				this.listBO=listBO;
+			}
+		@Override
+		public void processRow(ResultSet rs) throws SQLException {
+			System.out.println("StudentDAOImpl.StudentCallbackHandler.processRow(-)");
+			StudentBO bo=null;
+			//covert RS record into BO clss object
+			bo=new StudentBO();
+			bo.setSno(rs.getInt(1));
+			bo.setSname(rs.getString(2));
+			bo.setSadd(rs.getString(3));
+			bo.setAvg(rs.getFloat(4));
+			listBO.add(bo);
+		}//method
 		
 	}//inner class
 

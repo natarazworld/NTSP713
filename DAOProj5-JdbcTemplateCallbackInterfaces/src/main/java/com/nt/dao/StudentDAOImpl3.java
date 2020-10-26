@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nt.bo.StudentBO;
 
-@Repository("studDAO")
+//@Repository("studDAO")
 public class StudentDAOImpl3 implements StudentDAO {
 	private static final String  GET_STUDENT_BY_NO="SELECT SNO,SNAME,SADD,AVG FROM STUDENT WHERE SNO=?" ;
 	private static final String  GET_STUDENTS_BY_CITIES="SELECT SNO,SNAME,SADD,AVG FROM STUDENT WHERE SADD IN(?,?,?)" ;
@@ -41,6 +41,12 @@ public class StudentDAOImpl3 implements StudentDAO {
 				                    );
 		
 		return listBO;
+	}
+
+	@Override
+	public List<StudentBO> getStudentsByCities1(String city1, String city2, String city3) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

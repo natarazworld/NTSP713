@@ -52,6 +52,22 @@ public class JdbcTemplateCallbackInterfacesTest {
 			else
 				System.err.println("Other Internal problems");
 		}
+		
+		System.out.println("========================================");
+		
+		try {
+			System.out.println("Students belonging to hyd,delhi,vizag cities");
+			listDTO=service.fetchStudentsByCities1("hyd","vizag","delhi");
+			listDTO.forEach(System.out::println);
+		}//try
+		catch(DataAccessException dae) {
+			if(dae instanceof EmptyResultDataAccessException)
+				  System.err.println("Record not found");
+			else if(dae instanceof BadSqlGrammarException)
+				System.err.println("SQLquery is wrong");
+			else
+				System.err.println("Other Internal problems");
+		}
 
 		  //close container
 		((AbstractApplicationContext) ctx).close();
