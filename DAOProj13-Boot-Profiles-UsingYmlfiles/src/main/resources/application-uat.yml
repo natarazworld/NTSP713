@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: manager
+    type: org.apache.commons.dbcp2.BasicDataSource
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: system

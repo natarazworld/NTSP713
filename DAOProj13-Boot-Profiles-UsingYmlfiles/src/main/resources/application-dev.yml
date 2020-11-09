@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    type: com.mchange.v2.c3p0.ComboPooledDataSource
+    url: jdbc:mysql:///ntsp713db
+    username: root
