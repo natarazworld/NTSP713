@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.14.202009150957-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/main/java/com/nt/cfgs/applicationContext.xml</config>
+		<config>src/main/java/com/nt/cfgs/service-beans.xml</config>
+		<config>src/main/java/com/nt/cfgs/controller-beans.xml</config>
+		<config>src/main/java/com/nt/cfgs/persistence-beans-dev.xml</config>
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>
