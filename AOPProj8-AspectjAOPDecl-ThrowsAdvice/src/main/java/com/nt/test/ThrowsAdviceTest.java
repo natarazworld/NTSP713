@@ -19,8 +19,8 @@ public class ThrowsAdviceTest {
 			System.out.println("Bill Amount::"+proxy.generateBill(new String[] {"X-MaxTree","cake","Star light","bells"},
 					                                                                                       new float[] {5000,1000,3000,0}));
 		}
-		catch(IllegalArgumentException iae) {
-			iae.printStackTrace();
+		catch(Exception ex) {
+			ex.printStackTrace();
 		}
        //close container
 		((AbstractApplicationContext) ctx).close();

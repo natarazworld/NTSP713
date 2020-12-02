@@ -9,12 +9,16 @@
    
    <!-- Advice/Aspect class cfg -->
    <bean id="exceptionLoggerAspect"  class="com.nt.aspect.CommonExceptionLogger"/>
+   <bean id="exceptionGrapherAspect" class="com.nt.aspect.CommonExceptionGrapher"/>
    
    <aop:config>
        <aop:pointcut expression="execution(float   com.nt.service.ShoppingStore.generateBill(..))" id="ptc"/>
        <aop:aspect ref="exceptionLoggerAspect">
            <aop:after-throwing method="exceptionLogger"  pointcut-ref="ptc"  throwing="ex"/>
        </aop:aspect>
+      <!--    <aop:aspect ref="exceptionGrapherAspect">
+           <aop:after-throwing method="exceptionGrapher"  pointcut-ref="ptc"  throwing="ex"/>
+       </aop:aspect> -->
    </aop:config>
 
 
