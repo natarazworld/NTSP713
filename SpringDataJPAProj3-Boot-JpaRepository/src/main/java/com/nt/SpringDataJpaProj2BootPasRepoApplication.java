@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.nt.dto.EmployeeDTO;
 import com.nt.service.IEmployeeMgmtService;
 
 @SpringBootApplication
@@ -16,10 +17,10 @@ public class SpringDataJpaProj2BootPasRepoApplication {
 		//get Service class obj
 		IEmployeeMgmtService service=ctx.getBean("empService",IEmployeeMgmtService.class);
 		//invoke methods
-		//service.getAllEmployeesBySorting("eno", false).forEach(System.out::println);
-		 // service.getAllEmployeesBySorting(true,"ename","eadd","eSalary").forEach(System.out::println);
-		  //service.getPageRecords(0,3).forEach(System.out::println);
-		service.getRecordsByPagination(3);
+		 //System.out.println("emp details"+service.fetchEmployeeById(21));
+		
+		service.fetchEmployeesExampleData(new EmployeeDTO(null,"jani","vizag",80000.0f),"ename", true).forEach(System.out::println);
+		
 		
 		//close container
 		((ConfigurableApplicationContext) ctx).close();
