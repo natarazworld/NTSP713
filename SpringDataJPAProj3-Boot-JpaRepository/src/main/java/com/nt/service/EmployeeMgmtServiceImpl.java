@@ -52,4 +52,19 @@ public class EmployeeMgmtServiceImpl implements IEmployeeMgmtService {
 		return listDTO;
 	}//method
 
+	@Override
+	public void removeEmployeesInBatch(List<EmployeeDTO> listDTO) {
+		
+		//convert  ListDTO to ListEntities
+		List<Employee> listEntities=new ArrayList();
+		listDTO.forEach(dto->{
+			Employee entity=new Employee();
+			BeanUtils.copyProperties(dto, entity);
+			listEntities.add(entity);
+		});
+		//use repo
+		empRepo.deleteInBatch(listEntities);
+		
+	}
+
 }//class

@@ -9,16 +9,16 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Data
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 public class EmployeeDTO  implements Serializable {
 	private  Integer eno;
-	//@NonNull
+	@NonNull
 	private  String ename;
-	//@NonNull
+	@NonNull
 	private  String eadd;
-	//@NonNull
+	@NonNull
 	private  Float salary;
 	
 	public  EmployeeDTO(int eno) {
