@@ -17,12 +17,8 @@ public class SpringDataJpa8CallingPlSqlProcedureApplication {
 		ApplicationContext ctx=SpringApplication.run(SpringDataJpa8CallingPlSqlProcedureApplication.class, args);
 		//get Service class obj
 		IEmployeeMgmtService  service=ctx.getBean("empService",IEmployeeMgmtService.class);
-		//invoke method
-		//service.fetchEmpsBySalaryRange(10000, 100000).forEach(System.out::println);
-		 //System.out.println("------------------------------------");
-		 //service.fetchEmpsDataByCities("hyd","delhi").forEach(data->System.out.println(Arrays.toString(data)));
-		System.out.println("------------------------------------");
-		  System.out.println(service.authenticate("raja","rani"));
+		//invoke the method
+		  service.fetchEmpsByCities("hyd", "delhi").forEach(System.out::println);
 		
 		//close container
 		((ConfigurableApplicationContext) ctx).close();

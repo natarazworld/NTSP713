@@ -1,5 +1,8 @@
 package com.nt.service;
 
+import java.sql.CallableStatement;
+import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureQuery;
 
+import org.hibernate.Session;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -83,5 +87,50 @@ public class EmployeeMgmtServiceImpl implements IEmployeeMgmtService {
 		List<Object[]> list=procedure.getResultList();
 		return list;
 	}
+
+	/*CREATE OR REPLACE FUNCTION FX_AUTHENTICATION( UNAME IN VARCHAR2 , PWD IN VARCHAR2) RETURN VARCHAR2 AS 
+	   CNT NUMBER(5);
+	   RESULT VARCHAR2(20);
+	BEGIN
+	
+	   SELECT COUNT(*) INTO CNT  FROM USERSLIST WHERE USERNAME=UNAME AND PASSWORD=PWD;
+	   IF(CNT<>0) THEN
+	     RESULT:='VALID CREDENTIALS';
+	   ELSE    
+	     RESULT:='INVALID CREDENTIALS'; 
+	   END IF;  
+	  RETURN RESULT;
+	END FX_AUTHENTICATION;
+	*/	
+	
+	@Override
+	public String authenticate(String username, String password) {
+		//unwrap Session obj from Entity Manager
+	 	Session ses=em.unwrap(Session.class);
+	 	 // write JDBc code
+	 	String result=ses.doReturningWork(con->{
+	 		try {
+	 		//create CallableStatemene object
+	 			CallableStatement cs=con.prepareCall("{?=call FX_AUTHENTICATION(?,?)}");
+	 			//register  return parameter with JDBC type
+	 			cs.registerOutParameter(1,Types.VARCHAR); //return param
+	 			//set values to IN params
+	 			cs.setString(2,username);
+	 			cs.setString(3,password);
+	 			//call PL/SQL function
+	 			cs.execute();
+	 			//get result from Return params
+	 			String  output=cs.getString(1);
+	 			return output;
+	 		}//try
+	 		catch(SQLException se) {
+	 			se.printStackTrace();
+	 			return null;
+	 		}
+	 	});
+		return result;
+	}//method
+	
+	
 	
 }//class
