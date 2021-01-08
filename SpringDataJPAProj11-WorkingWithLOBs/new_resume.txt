@@ -1,0 +1,4 @@
+name:raja
+age:30
+qlfy: B.tech
+addrss:hyd
