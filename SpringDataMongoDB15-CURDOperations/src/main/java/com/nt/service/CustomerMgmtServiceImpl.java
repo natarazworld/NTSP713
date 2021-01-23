@@ -59,5 +59,35 @@ public class CustomerMgmtServiceImpl implements ICustomerMgmtService {
 		return dto;
 	}
 
+	@Override
+	public List<CustomerDTO> fetchCustomersByCadd(String cadd) {
+		//use repo
+		List<Customer> listDocs=custRepo.findByCadd(cadd);
+		//convert listDocs to  listDTO
+		List<CustomerDTO> listDTO=new ArrayList();
+		listDocs.forEach(doc->{
+		  CustomerDTO dto=new CustomerDTO();
+		  BeanUtils.copyProperties(doc, dto);
+		  listDTO.add(dto);
+		});
+		
+		return listDTO;
+	}
+
+	@Override
+	public List<CustomerDTO> fetchCustomersByCnoRange(int start, int end) {
+		//use repo
+				List<Customer> listDocs=custRepo.findByCnoBetween(start, end);
+				//convert listDocs to  listDTO
+				List<CustomerDTO> listDTO=new ArrayList();
+				listDocs.forEach(doc->{
+				  CustomerDTO dto=new CustomerDTO();
+				  BeanUtils.copyProperties(doc, dto);
+				  listDTO.add(dto);
+				});
+				
+				return listDTO;
+	}
+
 	
-}
+}//class
