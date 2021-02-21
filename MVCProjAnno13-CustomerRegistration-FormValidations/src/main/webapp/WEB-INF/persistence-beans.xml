@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+  <!-- DataSource cfg -->
+  <jee:jndi-lookup id="ds" jndi-name="java:/comp/env/DsJndi"/>
+  
+  <!-- JdbcTemplate cfg -->
+  <bean id="template"  class="org.springframework.jdbc.core.JdbcTemplate">
+         <constructor-arg ref="ds"/>
+  </bean>
+  
+  <context:component-scan base-package="com.nt.dao"/>
+  
+
+</beans>
