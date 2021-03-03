@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean id="home"  class="org.springframework.web.servlet.view.InternalResourceView">
+          <property name="url"  value="/WEB-INF/pages/namaste.jsp"/>
+   </bean>
+   
+   <bean id="result"  class="org.springframework.web.servlet.view.InternalResourceView">
+          <property name="url"  value="/WEB-INF/pages/show_result.jsp"/>
+   </bean>
+   
+   <bean id="about_us"  class="org.springframework.web.servlet.view.InternalResourceView">
+          <property name="url"  value="/WEB-INF/pages1/about_us.jsp"/>
+   </bean>
+   
+   
+
+</beans>
