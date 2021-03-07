@@ -1,0 +1,31 @@
+
+plugins {
+    id 'war'
+}
+
+//To change  java version at compile time and runtime
+sourceCompatibility='14.0.1'
+targetCompatibility='14.0.1'
+
+
+repositories {
+    jcenter()
+}
+// To move  the webcontent  folder files to web root folder during the deployment.
+eclipse {
+	wtp {
+		component {
+			resource sourcePath: "/WebContent", deployPath: "/"
+		}
+	}
+}
+
+
+dependencies {
+    // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    // https://mvnrepository.com/artifact/org.springframework/spring-context-support
+implementation group: 'org.springframework', name: 'spring-context-support', version: '5.3.4'
+    // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.4'
+}
