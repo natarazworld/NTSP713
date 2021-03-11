@@ -15,7 +15,7 @@
               <td>${emp.esalary}  </td>
               <td>
                <a href="edit?no=${emp.eno}"><img src="images/edit.jpg" width="50px;" height="50px;"> </a>
-               <a href="delete?no=${emp.eno}"><img src="images/delete.jfif" width="50px;" height="50px;"> </a>
+               <a href="delete?no=${emp.eno}" onclick="return confirm(' Do u want to delete?')"><img src="images/delete.jfif" width="50px;" height="50px;"> </a>
                 </td>
           </tr>
        </c:forEach>
@@ -25,3 +25,4 @@
          <h1 style="color:red;text-align:center">No Records found </h1>
   </c:otherwise>
 </c:choose>
+    <blink><h1 style="color:red;text-align:center">${resultMsg}</h1> </blink>
