@@ -1,0 +1,53 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'nit'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+// To involve webapp folder in the deployment of web application
+eclipse {
+	wtp {
+		component {
+			resource sourcePath: "/webapp", deployPath: "/"
+		}
+	}
+}
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
+implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper'
+	// https://mvnrepository.com/artifact/javax.servlet/jstl
+implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+	// https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+implementation group: 'commons-io', name: 'commons-io', version: '2.8.0'
+	
+}
+
+test {
+	useJUnitPlatform()
+}
